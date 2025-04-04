@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanical Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Mechanical Tic-Tac-Toe Simulation</h1>
+
+  <div class="main-container">
+
+    <div class="info-column info-left">
+      <h2>The Mechanical Origins</h2>
+      <p>
+        Long before silicon chips and software, pioneers created game-playing "AI" using physical mechanisms. This
+        simulation honors those early marvels of engineering.
+      </p>
+
+      <h3>Early Electro-Mechanical Games: The Nimatron</h3>
+      <p>
+        One of the earliest examples of an automatic game machine was the <strong>Nimatron</strong>, built by Dr. Edward
+        Condon and his colleagues at Westinghouse Electric. It was displayed at the <strong>1940 New York World's
+          Fair</strong>.
+      </p>
+      <p>
+        While it played the game of Nim, not Tic-Tac-Toe, the Nimatron was significant because it used
+        electro-mechanical <strong>relays</strong> (electric switches) connected in complex circuits to represent the
+        game's logic and make decisions. It demonstrated that machines could perform logical operations to play a
+        strategy game against humans.
+      </p>
+
+      <h3>Purely Mechanical Logic: The Tinkertoy Computer</h3>
+      <p>
+        Perhaps the most famous example directly related to this simulation is the Tic-Tac-Toe machine built purely from
+        <strong>Tinkertoys</strong>. In the late 1970s, MIT students <strong>Danny Hillis</strong> and <strong>Brian
+          Silverman</strong> constructed a computer from wooden Tinkertoy rods, spools, and string that could play a
+        perfect game of Tic-Tac-Toe.
+      </p>
+      <p>
+        This machine contained no electronic components. The player would make their move by setting parts of the
+        machine, which would then physically trigger a cascade of Tinkertoy rods and levers. These represented the
+        game's decision tree – checking for wins, blocks, or strategic positions based entirely on the physical
+        arrangement and interaction of the parts. Its design was later detailed by <strong>A. K. Dewdney</strong> in his
+        "Computer Recreations" column in Scientific American in <strong>1989</strong>.
+      </p>
+
+      <h3>The Core Idea</h3>
+      <p>
+        These machines, whether using relays or Tinkertoys, encoded game strategy directly into their physical
+        structure. Every possible game state and the corresponding optimal response were built into the hardware itself
+        – a tangible finite state machine.
+      </p>
+    </div>
+
+    <div class="game-column">
+      <div id="gameBoard">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+      <p id="statusArea">Your turn (O)</p>
+      <button id="restartButton">Restart Game</button>
+    </div>
+
+    <div class="info-column info-right">
+      <h2>How This Simulated AI Works</h2>
+      <p>
+        This simulation mimics the fixed logic of a mechanical Tic-Tac-Toe machine:
+      </p>
+      <ol>
+        <li><strong>Check to Win:</strong> Can the AI ('X') win immediately? If yes, it makes that move.</li>
+        <li><strong>Check to Block:</strong> Can the Player ('O') win on their next turn? If yes, the AI blocks that
+          spot.</li>
+        <li><strong>Strategic Move:</strong> If neither applies, it follows a built-in optimal strategy: take the
+          center, then a corner, then a side.</li>
+      </ol>
+      <h3>Mechanical vs. Digital AI</h3>
+      <p>
+        Unlike modern digital AI (which runs algorithms like Minimax or uses machine learning on general processors),
+        the original mechanical AI had its strategy physically *hardwired* into its structure. It was essentially a
+        complex finite state machine built from physical parts, reacting predictably to every possible game state. It
+        couldn't learn or change its strategy without physical modification.
+      </p>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

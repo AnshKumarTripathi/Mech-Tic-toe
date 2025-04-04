@@ -1,0 +1,186 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin-top: 20px; /* Reduced margin */
+  padding: 0 20px; /* Add some padding on the sides */
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Main container for the three columns */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Arrange columns side-by-side */
+  justify-content: center; /* Center the group horizontally */
+  align-items: flex-start; /* Align items to the top */
+  gap: 30px; /* Space between columns */
+  width: 100%;
+  max-width: 1200px; /* Max width for the entire layout */
+  margin: 0 auto; /* Center container */
+}
+
+/* Styling for the central game column */
+.game-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Takes up necessary space, doesn't grow/shrink excessively */
+  flex: 0 1 auto;
+}
+
+/* Styling for the informational columns */
+.info-column {
+  flex: 1 1 300px; /* Allow columns to grow/shrink, base width 300px */
+  max-width: 350px; /* Max width to keep readability */
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-column h2 {
+  color: #0056b3; /* Darker blue for headings */
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.info-column h3 {
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.info-column p,
+.info-column li {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.info-column ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+/* --- Existing Game Board Styles --- */
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  background-color: #444;
+  border: 5px solid #444;
+  width: 310px;
+  margin-bottom: 20px; /* Keep space below board */
+}
+
+.cell {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cell:hover:not(.X):not(.O):not(.game-over *) {
+  /* Adjust hover for game over state */
+  background-color: #eee;
+}
+
+.cell.O {
+  color: #007bff;
+  cursor: not-allowed;
+}
+
+.cell.X {
+  color: #dc3545;
+  cursor: not-allowed;
+}
+
+#statusArea {
+  font-size: 1.2em;
+  font-weight: bold;
+  min-height: 1.5em;
+  color: #555;
+  margin-bottom: 15px; /* Space before button */
+}
+
+#restartButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  /* margin-top: 15px; Removed, spacing handled by parent/status area */
+  transition: background-color 0.2s ease;
+}
+
+#restartButton:hover {
+  background-color: #218838;
+}
+
+/* Style to disable clicks visually when game ends */
+.game-over .cell:not(.X):not(.O) {
+  cursor: not-allowed;
+  background-color: #f8f9fa;
+}
+
+.game-over .cell:not(.X):not(.O):hover {
+  background-color: #f8f9fa;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+  .main-container {
+    flex-direction: column; /* Stack columns vertically */
+    align-items: center; /* Center items horizontally when stacked */
+    gap: 20px;
+  }
+
+  .info-column {
+    max-width: 600px; /* Allow info columns to be wider */
+    width: 90%; /* Take up most of width */
+    flex-basis: auto; /* Reset flex basis */
+  }
+
+  .game-column {
+    order: 0; /* Ensure game stays visually between info sections if desired, or set order */
+  }
+  .info-left {
+    order: 1; /* Adjust order if needed */
+  }
+  .info-right {
+    order: 2; /* Adjust order if needed */
+  }
+}
+
+@media (max-width: 400px) {
+  #gameBoard {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    width: 250px; /* 3*80 + 2*5 */
+    border-width: 3px;
+  }
+  .cell {
+    font-size: 2.5em;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+}
